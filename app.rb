@@ -8,15 +8,21 @@ YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
 
 get '/' do
 
-  # defaults
+  # defaults you can override in the head of your readme
   data = {
     'title' => 'not found',
-    'hide_footer' => false
+    'footnote' => '<hr>Powered by <a href=https://github.com/play-with-docker/play-with-docker>PWD</a> and <a href=https://github.com/jonocodes/pwder/>PWDer</a>'
   }
 
-  # TODO: allow setting template from http file via query param ?remote_template=http://...
+  if params['template']
+    begin
+      template = open(params['template']) { |io| _data = io.read }
+    rescue OpenURI::HTTPError
+      ; # TODO: log error
+    end
+  end
 
-  template = File.read("#{__dir__}/default.html")
+  template = File.read("#{__dir__}/default.html") if not template
 
   begin
     doc = open(params['doc']) { |io| _data = io.read }
@@ -32,6 +38,8 @@ get '/' do
     data['content'] = Kramdown::Document.new(markdown, :input => 'GFM').to_html
 
   rescue OpenURI::HTTPError
+
+    # TODO: log error
 
     about = File.read("#{__dir__}/about.html")
     data['terms'] = 0

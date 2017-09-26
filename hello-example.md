@@ -3,11 +3,7 @@ title: "Hello World!"
 terms: 2
 ---
 
-## Welcome
 This is a demo for [PWDer](http://github.com/jonocodes/pwder).
-
-## Prerequisites
-There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor. Prior experience in developing web applications will be helpful but is not required. As you proceed further along the tutorial, we'll make use of [Docker Cloud](https://cloud.docker.com/).
 
 ## Start a container
 
