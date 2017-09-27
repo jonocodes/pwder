@@ -10,4 +10,5 @@ gem 'puma'
 
 group :development do
   gem 'rerun'
+  gem 'foreman'
 end
