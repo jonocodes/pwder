@@ -6,11 +6,12 @@ require 'liquid'
 
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
 
+set :bind, '0.0.0.0'
+
 get '/' do
 
   # defaults you can override in the head of your readme
   data = {
-    'title' => 'not found',
     'footnote' => '<hr>Powered by <a href=https://github.com/play-with-docker/play-with-docker>PWD</a> and <a href=https://github.com/jonocodes/pwder/>PWDer</a>'
   }
 
@@ -42,7 +43,9 @@ get '/' do
     # TODO: log error
 
     about = File.read("#{__dir__}/about.html")
+    
     data['terms'] = 0
+    data['title'] = 'not found'
     data['content'] = Liquid::Template.parse(about).render( {
       'error' => "Error loading readme: <a href=#{params['doc']}>#{params['doc']}</a>" } )
   end

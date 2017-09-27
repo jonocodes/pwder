@@ -18,18 +18,24 @@ http://pwder.com/?doc=http://../pwd-demo.md
 
 ## Parameters
 
-** doc ** (required) - URL path to a publicly accessible Markdown demo for your project. It should follow the format described in the [PWD guide for writing tutorials] (https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md)
+**doc** (required) - URL path to a publicly accessible Markdown demo for your project. It should follow the format described in the [PWD guide for writing tutorials] (https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md)
 
-** template ** (optional) - URL path for a [Liquid](https://shopify.github.io/liquid/) template that your markdown will be rendered into. If you want to do this, its probably best to copy default.html and make modifications to that.
+**template** (optional) - URL path for a [Liquid](https://shopify.github.io/liquid/) template that your markdown will be rendered into. If you want to do this, its probably best to copy default.html and make modifications to that.
 
 ## Development
 
     bundle install
     rerun 'ruby app.rb'
 
+or run with Docker
+
+    docker build -t pwder .
+    docker run -p 4567:4567 pwder
+
 Visit http://localhost:4567/?doc=https://raw.githubusercontent.com/jonocodes/pwder/master/hello-example.md&template=https://raw.githubusercontent.com/jonocodes/pwder/master/default.html
 
 or http://localhost:4567/?doc=https://raw.githubusercontent.com/play-with-docker/play-with-docker.github.io/master/_posts/2017-03-31-traefik-load-balancing.markdown
+
 
 ## TODO
 
