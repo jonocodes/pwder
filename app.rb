@@ -7,6 +7,7 @@ require 'liquid'
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
 
 set :bind, '0.0.0.0'
+configure { set :server, :puma }
 
 get '/' do
 
@@ -43,7 +44,7 @@ get '/' do
     # TODO: log error
 
     about = File.read("#{__dir__}/about.html")
-    
+
     data['terms'] = 0
     data['title'] = 'not found'
     data['content'] = Liquid::Template.parse(about).render( {
