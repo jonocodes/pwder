@@ -41,4 +41,6 @@ or http://localhost:4567/?doc=https://raw.githubusercontent.com/play-with-docker
 
 * It would be cool to get this working entirely in browser instead of relying on a web service. I briefly tried to get strapdown and kramed to render GFM but it could use a little work.
 
+* Figure out a way to keep up to date with upstream Jekyll theme better.
+
 * Have other ideas? Open a ticket or PR. Thanks.
