@@ -17,8 +17,7 @@ def about(error="")
   }
 end
 
-get '/' do
-
+def show()
   # defaults you can override in the head of your readme
   data = {
     'footnote' => 'Powered by <a href=https://github.com/play-with-docker/play-with-docker target=_blank>PWD</a> and <a href=https://github.com/jonocodes/pwder/ target=_blank>PWDer</a>'
@@ -58,4 +57,16 @@ get '/' do
   end
 
   Liquid::Template.parse(template).render( data )
+end
+
+# sinatra routes
+
+get '/gh/*' do |path|
+  params['doc'] = 'https://raw.githubusercontent.com/' + path
+  logger.info params
+  show()
+end
+
+get '/' do
+  show()
 end
