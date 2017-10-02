@@ -27,12 +27,12 @@ Set up a basic 'hello world' config.
 ```.term1
 cat <<EOF > /etc/nginx/conf.d/default.conf
 server {
-   listen 80;
+  listen 80;
 
-   location = /hello {
-   		default_type text/html;
-      return 200 "<h1>Hello world!</h1>";
-   }
+  location = /hello {
+    default_type text/html;
+    return 200 "<h1>Hello world!</h1>";
+  }
 }
 EOF
 ```
@@ -43,7 +43,7 @@ Start the service in the foreground, so we can easily stop it if needed.
 nginx -g "daemon off;"
 ```
 
-# Test
+## Test
 
 Now lets see if it node2 can curl Nginx on node1
 ```.term2
