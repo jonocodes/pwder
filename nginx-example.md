@@ -11,7 +11,7 @@ Play with Docker does not mean you have to use Docker yourself. In this example 
 
 Click the text blocks to execute the commands automatically on the right terminals.
 
-## Install Nginx
+## Install
 
 The base OS we are using is Alpine Linux, so here will will use apk to install Nginx.
 
@@ -19,6 +19,8 @@ The base OS we are using is Alpine Linux, so here will will use apk to install N
 apk --update add nginx
 mkdir /run/nginx
 ```
+
+## Setup
 
 Set up a basic 'hello world' config.
 
@@ -41,9 +43,11 @@ Start the service in the foreground, so we can easily stop it if needed.
 nginx -g "daemon off;"
 ```
 
+# Test
+
 Now lets see if it node2 can curl Nginx on node1
 ```.term2
-curl -i http://node1:80/hello
+curl -i http://node1/hello
 ```
 
 Expected output
