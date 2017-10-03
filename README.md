@@ -26,7 +26,7 @@ http://pwder.io/gh/jonocodes/pwder/master/hello-example.md
 
 An Nginx 'hello world' without Docker
 
-http://pwder.io/gh/jonocodes/pwder/master/nxinx-example.md
+http://pwder.io/gh/jonocodes/pwder/master/nginx-example.md
 
 ## Parameters
 
