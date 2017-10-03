@@ -1,8 +1,10 @@
 # PWDer
 
-Render Play with Docker tutorials to simply showcase your application by only writing Markdown.
+Showcase fully interactive demos of your open source project by only writing markdown.
 
-![PWDer in action](screenshot.png?raw=true "Title")
+Everything is run in the browser. Under the hood *Play with Docker* is used to spin up machine instances so users dont need to install anything.
+
+![PWDer in action](https://raw.githubusercontent.com/jonocodes/pwder/master/screenshot.png?raw=true "Title")
 
 ## Purpose
 
@@ -41,7 +43,13 @@ example:
 
 **template** (optional) - URL path for a [Liquid](https://shopify.github.io/liquid/) template that your markdown will be rendered into. If you want to do this, its probably best to copy default.html and make modifications to that.
 
-example: /?doc=https://raw.githubusercontent.com/jonocodes/pwder/master/hello-example.md&template=https://raw.githubusercontent.com/jonocodes/pwder/master/default.html
+example: /gh/jonocodes/pwder/master/hello-example.md&template=https://raw.githubusercontent.com/jonocodes/pwder/master/default.html
+
+**(front matter parameters)** (optional) - These can be used to override values specified in the front matter. For example you can specify values for 'title' or 'terms'.
+
+example:
+/gh/jonocodes/pwder/master/hello-example.md?terms=0&title=Sample
+
 
 ## Development
 
@@ -53,9 +61,9 @@ or run with Docker
     docker build -t pwder .
     docker run -p 4567:4567 pwder
 
-Visit http://localhost:4567/?doc=https://raw.githubusercontent.com/jonocodes/pwder/master/hello-example.md
+Visit http://localhost:4567/gh/jonocodes/pwder/master/hello-example.md
 
-or http://localhost:4567/?doc=https://raw.githubusercontent.com/play-with-docker/play-with-docker.github.io/master/_posts/2017-03-31-traefik-load-balancing.markdown
+or http://localhost:4567/gh/play-with-docker/play-with-docker.github.io/master/_posts/2017-03-31-traefik-load-balancing.markdown
 
 ## TODO
 

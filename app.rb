@@ -39,15 +39,17 @@ def show()
     begin
       doc = open(params['doc']) { |io| _data = io.read }
 
-      markdown = doc
-
+      # parse the front matter
       if doc =~ YAML_FRONT_MATTER_REGEXP
-        markdown = $'
-        data_file = SafeYAML.load(Regexp.last_match(1))
-        data.merge!(data_file)
+        doc = $'
+        data.merge!(SafeYAML.load(Regexp.last_match(1)))
       end
 
-      data['content'] = Kramdown::Document.new(markdown, :input => 'GFM').to_html
+      # override front matter with optional query params
+      params['terms'] = Integer(params['terms']) if params.key?('terms')
+      data.merge!(params)
+
+      data['content'] = Kramdown::Document.new(doc, :input => 'GFM').to_html
 
     rescue Exception => e
       logger.error "Trying loading doc #{params['doc']} ... #{e.message}"
@@ -56,7 +58,7 @@ def show()
     end
   end
 
-  Liquid::Template.parse(template).render( data )
+  Liquid::Template.parse(template).render(data)
 end
 
 # sinatra routes
