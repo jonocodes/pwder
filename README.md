@@ -14,7 +14,7 @@ The [Play with Docker classroom](http://training.play-with-docker.com/) is also 
 
 If you want to showcase your own application there is not a simple way to do it. You could either write the HTML/Javascript yourself to make use of the [PWD Javascript SDK](https://github.com/play-with-docker/sdk) or you could [fork the classroom repo](https://github.com/play-with-docker/play-with-docker.github.io) and host a copy of that.
 
-PWD-er simplifies this for you by rendering the markdown into a template for you as needed. No Jekyll precompilation necessary. Just post a Markdown readme that [follows the writing guide]((https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md) to your public repo and point to it with PWD-er.
+PWD-er simplifies this for you by rendering the markdown into a template for you as needed. No Jekyll precompilation necessary. Just post a Markdown readme that [follows the writing guide](https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md) to your public repo and point to it with PWD-er.
 
 ## Example Use
 
