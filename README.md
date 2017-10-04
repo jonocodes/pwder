@@ -32,7 +32,7 @@ http://pwder.io/gh/jonocodes/pwder/master/nginx-example.md
 
 ## Parameters
 
-**doc** (required) - URL path to a publicly accessible Markdown demo for your project. It should follow the format described in the [PWD guide for writing tutorials] (https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md)
+**doc** (required) - URL path to a publicly accessible Markdown demo for your project. It should follow the format described in the [PWD guide for writing tutorials](https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md)
 
 example: /?doc=https://raw.githubusercontent.com/jonocodes/pwder/master/hello-example.md
 
