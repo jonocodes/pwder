@@ -17,6 +17,26 @@ def about(error="")
   }
 end
 
+def fetch_doc(path, shorthand=nil)
+
+  if (shorthand == 'gh')
+    path = 'https://raw.githubusercontent.com/' + path
+  elsif (shorthand == 'gst')
+    path = 'https://gist.githubusercontent.com/' + path
+  elsif (shorthand == 'examples')
+    logger.debug("Reading local file #{__dir__}/examples/#{path}")
+    # TODO: make sure path is sub of dir and cant go above
+    return File.read("#{__dir__}/examples/#{path}")
+  elsif (shorthand == 'here' and ENV['PWDER_HERE_DIR'])
+    return File.read("#{ENV['PWDER_HERE_DIR']}/#{path}")
+  end
+
+  # TODO: else error out = invalid shorthand
+
+  open(path) { |io| _data = io.read }
+
+end
+
 def show()
   # defaults you can override in the head of your readme
   data = {
@@ -37,7 +57,8 @@ def show()
     data = data.merge(about())
   else
     begin
-      doc = open(params['doc']) { |io| _data = io.read }
+
+      doc = fetch_doc(params['doc'], params['shorthand'])
 
       # parse the front matter
       if doc =~ YAML_FRONT_MATTER_REGEXP
@@ -63,9 +84,9 @@ end
 
 # sinatra routes
 
-get '/gh/*' do |path|
-  params['doc'] = 'https://raw.githubusercontent.com/' + path
-  logger.info params
+get '/*/*' do |shorthand, path|
+  params['shorthand'] = shorthand
+  params['doc'] = path
   show()
 end
 
