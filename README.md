@@ -30,44 +30,72 @@ An Nginx 'hello world' without Docker
 
 http://pwder.io/gh/jonocodes/pwder/master/examples/nginx.md
 
+A more complex document
+
+http://pwder.io/gh/play-with-docker/play-with-docker.github.io/master/_posts/2017-03-31-traefik-load-balancing.markdown
+
 ## Parameters
+
+### Query parameters
 
 **doc** (required) - URL path to a publicly accessible Markdown demo for your project. It should follow the format described in the [PWD guide for writing tutorials] (https://github.com/play-with-docker/play-with-docker.github.io/blob/master/writing-tutorials.md)
 
 example: /?doc=https://raw.githubusercontent.com/jonocodes/pwder/master/examples/hello.md
 
-Optionally you can substitute */?doc=https://raw.githubusercontent.com/* with */gh/*
-
-example:
-/gh/jonocodes/pwder/master/examples/hello.md
 
 **template** (optional) - URL path for a [Liquid](https://shopify.github.io/liquid/) template that your markdown will be rendered into. If you want to do this, its probably best to copy default.html and make modifications to that.
 
 example: /gh/jonocodes/pwder/master/examples/hello.md&template=https://raw.githubusercontent.com/jonocodes/pwder/master/default.html
 
-**(front matter parameters)** (optional) - These can be used to override values specified in the front matter. For example you can specify values for 'title' or 'terms'.
+**(front matter parameters)** (optional) - These can be used to override values specified in the front matter. For example you can specify a value for 'terms' in case you want to force a different number of terminals to be shown.
 
 example:
 /gh/jonocodes/pwder/master/examples/hello.md?terms=0&title=Sample
 
-## Run your own instance
+### Path parameters / shorthands
+
+**/gh/** - Shorthand for github raw content. Translates into a query parameter of *doc=https://raw.githubusercontent.com/*
+
+example:
+/gh/jonocodes/pwder/master/examples/hello.md
+
+**/gst/** - Shorthand for github girt content. Translates into a query parameter of *doc=https://gist.githubusercontent.com/*
+
+example:
+/gst/jonocodes/31ca8f1d33fe12fcd0b6e282a40776f2/raw/68bf014e31e9cbbdd567426f3c486892b3704eef/openfaas_kong.md
+
+**/examples/** - This will read a file out of this project's *examples* directory. This is primarily used for development, but can also be used to test writing your own documents if you dont want to publish them first.
+
+example:
+/examples/hello.md
+
+**/here/** - If the environment variable PWDER_HERE_DIR is set at start time, this path will be used to serve documents from. Like **/examples/** this is only used for testing and development.
+
+example:
+/here/hello.md
+
+## Running PWDer
+
+If you want to run your own copy of it instead of using http://pwder.io, you can.
+
+### Configuration
+
+Set the PWDER_HERE_DIR environment variable to serve documents from the local server. This is used by the **/here/** route.
+
+Example use:
+
+    pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
+
+WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
+
+### Using Docker
 
     docker build -t pwder .
     docker run -p 4567:4567 pwder
 
-## Development
+### Development
 
     bundle install
     rerun 'ruby app.rb'
 
-Visit http://localhost:4567/gh/jonocodes/pwder/master/examples/hello.md
-
-or http://localhost:4567/gh/play-with-docker/play-with-docker.github.io/master/_posts/2017-03-31-traefik-load-balancing.markdown
-
-## TODO
-
-* It would be interesting to get this working entirely in browser instead of relying on a web service. I briefly tried to get strapdown and kramed to render GFM but it could use a little work.
-
-* Figure out a way to keep up to date with upstream Jekyll theme better.
-
-* Have other ideas? Please open a ticket or PR. Thanks.
+Visit http://localhost:4567/ in your browser.
