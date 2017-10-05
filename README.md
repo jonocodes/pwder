@@ -104,3 +104,7 @@ Example use:
     pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
 
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
+
+## Fun
+
+Try some [PWDer-ception](http://pwder.io/examples/pwderception.md)? PWDer in PWDer in PWDer ...
