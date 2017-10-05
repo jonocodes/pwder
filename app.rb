@@ -29,9 +29,17 @@ def fetch_doc(path, shorthand=nil)
     return File.read("#{__dir__}/examples/#{path}")
   elsif (shorthand == 'here' and ENV['PWDER_HERE_DIR'])
     return File.read("#{ENV['PWDER_HERE_DIR']}/#{path}")
+  elsif (shorthand != nil)
+    # TODO: error out = invalid shorthand
   end
 
-  # TODO: else error out = invalid shorthand
+  # fix entries that point to github to point to the raw version instead
+  if (path.match(/^https:\/\/github.com/))
+    path.sub!(/^https:\/\/github.com\/([^\/]*)\/([^\/]*)\/blob/, "https://raw.githubusercontent.com/\\1/\\2")
+  end
+
+  # TODO: fix this bad way of passing value back up
+  params['sourcelink'] = "<a href=#{path} target=_blank>Document source</a>"
 
   open(path) { |io| _data = io.read }
 
@@ -71,6 +79,8 @@ def show()
       data.merge!(params)
 
       data['content'] = Kramdown::Document.new(doc, :input => 'GFM').to_html
+
+      data['sourcelink'] = params['sourcelink']
 
     rescue Exception => e
       logger.error "Trying loading doc #{params['doc']} ... #{e.message}"

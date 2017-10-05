@@ -1,4 +1,5 @@
 FROM ruby:2.4-alpine
+
 MAINTAINER Jono Finger <jono@foodnotblogs.com>
 
 ENV APP_HOME /app
@@ -14,6 +15,4 @@ RUN apk --no-cache add build-base && \
 
 COPY . $APP_HOME
 
-#ENV PORT 3000
-#EXPOSE 3000
 CMD ["ruby", "app.rb"]

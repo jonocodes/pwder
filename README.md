@@ -74,7 +74,24 @@ example:
 
 ## Running PWDer
 
-If you want to run your own copy of it instead of using http://pwder.io, you can.
+You can run your own instance of the service instead of using the hosted http://pwder.io/ . This can be useful when writing your own documents.
+
+### Using Docker
+
+    docker run -p 4567:4567 jfinger/pwder
+
+### Development
+
+    docker build -t pwder .
+
+    docker run --rm -p 4567:4567 -v $PWD:/app \
+      -e PWDER_HERE_DIR=/pwder_here \
+      -v $PWD/examples:/pwder_here \
+      pwder rerun --background ruby app.rb
+
+Visit http://localhost:4567/ in your browser.
+
+If you want to serve documents from your host change the above '$PWD/examples' to the absolute path to that directory on the host.
 
 ### Configuration
 
@@ -85,15 +102,3 @@ Example use:
     pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
 
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
-
-### Using Docker
-
-    docker build -t pwder .
-    docker run -p 4567:4567 pwder
-
-### Development
-
-    bundle install
-    rerun 'ruby app.rb'
-
-Visit http://localhost:4567/ in your browser.
