@@ -100,6 +100,13 @@ get '/*/*' do |shorthand, path|
   show()
 end
 
+get '/pwderify' do
+  logger.info request.referrer
+  # redirect '/', 303
+  redirect to("/?doc=#{request.referrer}")
+  # show()
+end
+
 get '/' do
   show()
 end
