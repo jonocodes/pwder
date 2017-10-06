@@ -76,24 +76,25 @@ example:
 
 ## Running PWDer
 
-You can run your own instance of the service instead of using the hosted http://pwder.io/ . This can be useful when writing your own documents.
+You can run your own instance of the service instead of using the hosted http://pwder.io/ . This can be useful when writing your own documents. The only requirement is to have Docker installed.
 
 ### Using Docker
-
-    docker run -p 4567:4567 jonocodes/pwder
+```
+docker run -p 4567:4567 jonocodes/pwder
+```
+Visit http://localhost:4567/ in your browser.
 
 ### Development
 
-    docker build -t pwder .
+```
+./run.sh
+```
 
-    docker run --rm -p 4567:4567 -v $PWD:/app \
-      -e PWDER_HERE_DIR=/pwder_here \
-      -v $PWD/examples:/pwder_here \
-      pwder rerun --background ruby app.rb
+If you want to serve documents from your host set $PWDER_HERE_DIR to the absolute path to that directory on the host. For example if you files are in /tmp/docs:
 
-Visit http://localhost:4567/ in your browser.
-
-If you want to serve documents from your host change the above '$PWD/examples' to the absolute path to that directory on the host.
+```
+PWDER_HERE_DIR=/tmp ./run.sh
+```
 
 ### Configuration
 

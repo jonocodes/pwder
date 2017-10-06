@@ -5,13 +5,7 @@ terms: 2
 
 This is a demo for [PWDer](http://github.com/jonocodes/pwder).
 
-[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://localhost:4567/pwderify)
-
-[![one](https://raw.githubusercontent.com/jonocodes/pwder/master/static/pwderif.svg?raw=true)](http://localhost:4567/pwderify)
-
-[![two](https://raw.githubusercontent.com/jonocodes/pwder/master/static/pwderif.png)](http://localhost:4567/pwderify)
-
-[![three](https://travis-ci.org/openfaas/faas.svg?branch=master)](https://travis-ci.org/openfaas/faas)
+[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://localhost:4567/pwderify?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
 
 ## Start a container
 
