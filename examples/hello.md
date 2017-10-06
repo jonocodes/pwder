@@ -3,9 +3,7 @@ title: "Hello World!"
 terms: 2
 ---
 
-This is a demo for [PWDer](http://github.com/jonocodes/pwder).
-
-[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://localhost:4567/pwderify?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
+[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://pwder.io/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md) [*](http://localhost:4567/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
 
 ## Start a container
 

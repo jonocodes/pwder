@@ -90,7 +90,7 @@ Visit http://localhost:4567/ in your browser.
 ./run.sh
 ```
 
-If you want to serve documents from your host set $PWDER_HERE_DIR to the absolute path to that directory on the host. For example if you files are in /tmp/docs:
+If you want to serve documents from your host set $PWDER_HERE_DIR to the absolute path to that directory on the host. For example if you documents are in /tmp/docs:
 
 ```
 PWDER_HERE_DIR=/tmp ./run.sh
