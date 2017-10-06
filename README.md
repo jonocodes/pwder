@@ -78,7 +78,7 @@ You can run your own instance of the service instead of using the hosted http://
 
 ### Using Docker
 
-    docker run -p 4567:4567 jfinger/pwder
+    docker run -p 4567:4567 jonocodes/pwder
 
 ### Development
 
@@ -102,3 +102,7 @@ Example use:
     pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
 
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
+
+## Fun
+
+Did you know that PWDer can render itself? Try some [PWDer-ception](http://pwder.io/examples/pwderception.md) - PWDer in PWDer in PWDer ...
