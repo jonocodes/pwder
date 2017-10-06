@@ -80,7 +80,7 @@ You can run your own instance of the service instead of using the hosted http://
 
 ### Using Docker
 
-    docker run -p 4567:4567 jfinger/pwder
+    docker run -p 4567:4567 jonocodes/pwder
 
 ### Development
 
@@ -107,4 +107,4 @@ WARNING: This should be used in testing or development only, and if set incorrec
 
 ## Fun
 
-Try some [PWDer-ception](http://pwder.io/examples/pwderception.md)? PWDer in PWDer in PWDer ...
+Did you know that PWDer can render itself? Try some [PWDer-ception](http://pwder.io/examples/pwderception.md) - PWDer in PWDer in PWDer ...
