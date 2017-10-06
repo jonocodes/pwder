@@ -3,8 +3,11 @@ require 'kramdown'
 require 'safe_yaml'
 require 'open-uri'
 require 'liquid'
+require 'nokogiri'
 
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
+
+PWDERIFY_ALT='Make document interactive using pwder.io'
 
 set :bind, '0.0.0.0'
 configure { set :server, :puma }
@@ -12,7 +15,7 @@ configure { set :server, :puma }
 def about(error="")
   {
     'terms' => 0,
-    'content' => Liquid::Template.parse(File.read("#{__dir__}/about.html")
+    'content' => Liquid::Template.parse(File.read("#{__dir__}/about.liquid")
       ).render( {'error' => error} )
   }
 end
@@ -59,7 +62,7 @@ def show()
     end
   end
 
-  template = File.read("#{__dir__}/default.html") if not template
+  template = File.read("#{__dir__}/default.liquid") if not template
 
   if not params['doc']
     data = data.merge(about())
@@ -80,6 +83,13 @@ def show()
 
       data['content'] = Kramdown::Document.new(doc, :input => 'GFM').to_html
 
+      # remove the pwderify badge since we dont want to render it
+      if data['content'].include? PWDERIFY_ALT
+        _doc = Nokogiri::HTML(data['content'])
+        _doc.xpath("//a/img[@alt=\"#{PWDERIFY_ALT}\"]").remove
+        data['content'] = _doc.to_html
+      end
+
       data['sourcelink'] = params['sourcelink']
 
     rescue Exception => e
@@ -99,6 +109,13 @@ get '/*/*' do |shorthand, path|
   params['doc'] = path
   show()
 end
+
+# get '/pwderify' do
+#   logger.info "REFERER: #{request.referer}"
+#   # TODO: capturing referer wont work coming from github until pwder uses TLS
+#   # redirect to("/?doc=#{request.referrer}")
+#   show()
+# end
 
 get '/' do
   show()

@@ -9,7 +9,8 @@ WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
 
-RUN apk --no-cache add build-base && \
+RUN apk --no-cache add build-base libxslt-dev && \
+    bundle config --global build.nokogiri "--use-system-libraries" && \
     bundle install && \
     apk del build-base
 

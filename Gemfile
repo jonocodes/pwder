@@ -7,6 +7,7 @@ gem 'kramdown'
 gem 'safe_yaml'
 gem 'liquid'
 gem 'puma'
+gem 'nokogiri'
 
 group :development do
   gem 'rerun'

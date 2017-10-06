@@ -74,33 +74,29 @@ example:
 
 ## Running PWDer
 
-You can run your own instance of the service instead of using the hosted http://pwder.io/ . This can be useful when writing your own documents.
+You can run your own instance of the service instead of using the hosted http://pwder.io/ . This can be useful when writing your own documents. The only requirement is to have Docker installed.
 
 ### Using Docker
-
-    docker run -p 4567:4567 jonocodes/pwder
+```
+docker run -p 4567:4567 jonocodes/pwder
+```
+Visit http://localhost:4567/ in your browser.
 
 ### Development
 
-    docker build -t pwder .
-
-    docker run --rm -p 4567:4567 -v $PWD:/app \
-      -e PWDER_HERE_DIR=/pwder_here \
-      -v $PWD/examples:/pwder_here \
-      pwder rerun --background ruby app.rb
-
-Visit http://localhost:4567/ in your browser.
-
-If you want to serve documents from your host change the above '$PWD/examples' to the absolute path to that directory on the host.
+```
+./run.sh
+```
+This will start a live instance that you can work on.
 
 ### Configuration
 
 Set the PWDER_HERE_DIR environment variable to serve documents from the local server. This is used by the **/here/** route.
 
-Example use:
-
-    pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
-
+For example if you documents are in /tmp/docs:
+```
+PWDER_HERE_DIR=$/tmp/docs ./run.sh
+```
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
 
 ## Fun
