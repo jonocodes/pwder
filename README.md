@@ -89,21 +89,16 @@ Visit http://localhost:4567/ in your browser.
 ```
 ./run.sh
 ```
-
-If you want to serve documents from your host set $PWDER_HERE_DIR to the absolute path to that directory on the host. For example if you documents are in /tmp/docs:
-
-```
-PWDER_HERE_DIR=/tmp ./run.sh
-```
+This will start a live instance that you can work on.
 
 ### Configuration
 
 Set the PWDER_HERE_DIR environment variable to serve documents from the local server. This is used by the **/here/** route.
 
-Example use:
-
-    pwder> PWDER_HERE_DIR=$(pwd)/examples rerun 'ruby app.rb'
-
+For example if you documents are in /tmp/docs:
+```
+PWDER_HERE_DIR=$/tmp/docs ./run.sh
+```
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
 
 ## Fun

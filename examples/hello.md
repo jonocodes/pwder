@@ -3,7 +3,7 @@ title: "Hello World!"
 terms: 2
 ---
 
-[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://pwder.io/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md) [*](http://localhost:4567/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
+[![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://pwder.io/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
 
 ## Start a container
 
@@ -27,3 +27,5 @@ curl http://node1:84
 ```
 
 [Or visit it in a browser](/){:data-term=".term1"}{:data-port="84"}
+
+[.](http://localhost:4567/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
