@@ -95,7 +95,7 @@ Set the PWDER_HERE_DIR environment variable to serve documents from the local se
 
 For example if you documents are in /tmp/docs:
 ```
-PWDER_HERE_DIR=$/tmp/docs ./run.sh
+PWDER_HERE_DIR=/tmp/docs ./run.sh
 ```
 WARNING: This should be used in testing or development only, and if set incorrectly can expose a security risk to the server. For example if PWDER_HERE_DIR is set to '/', then the consumer can visit '/here/etc/passwd' in their browser.
 
