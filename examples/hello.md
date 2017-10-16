@@ -10,7 +10,6 @@ terms: 2
 ```.term1
 docker container run hello-world
 ```
-
 Expected output:
 ```
 ... hello world

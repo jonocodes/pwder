@@ -104,11 +104,17 @@ end
 
 # sinatra routes
 
+get '/static/*' do |path|
+  # TODO: make sure this is safe and wont fetch files outside static/
+  send_file "#{__dir__}/static/#{path}"
+end
+
 get '/*/*' do |shorthand, path|
   params['shorthand'] = shorthand
   params['doc'] = path
   show()
 end
+
 
 # get '/pwderify' do
 #   logger.info "REFERER: #{request.referer}"
