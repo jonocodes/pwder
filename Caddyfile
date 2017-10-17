@@ -1,0 +1,7 @@
+localhost:80
+
+proxy / localhost:4567
+
+log stdout
+
+errors stdout
