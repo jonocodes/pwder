@@ -12,7 +12,7 @@ docker container run hello-world
 ```
 Expected output:
 ```
-... hello world
+... Hello ...
 ```
 
 Lets run NGINX
@@ -26,5 +26,3 @@ curl http://node1:84
 ```
 
 [Or visit it in a browser](/){:data-term=".term1"}{:data-port="84"}
-
-[.](http://localhost:4567/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)

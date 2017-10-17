@@ -23,6 +23,7 @@ GEM
       ffi (>= 0.5.0, < 2)
     rerun (0.11.0)
       listen (~> 3.0)
+    rouge (3.0.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sinatra (2.0.0)
@@ -43,6 +44,7 @@ DEPENDENCIES
   nokogiri
   puma
   rerun
+  rouge
   safe_yaml
   sinatra
 
