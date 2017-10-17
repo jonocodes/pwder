@@ -8,6 +8,7 @@ gem 'safe_yaml'
 gem 'liquid'
 gem 'puma'
 gem 'nokogiri'
+gem 'rouge'
 
 group :development do
   gem 'rerun'

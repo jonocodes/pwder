@@ -81,7 +81,8 @@ def show()
       params['terms'] = Integer(params['terms']) if params.key?('terms')
       data.merge!(params)
 
-      data['content'] = Kramdown::Document.new(doc, :input => 'GFM').to_html
+      data['content'] = Kramdown::Document.new(doc,
+        {input: 'GFM', syntax_highlighter: 'rouge'}).to_html
 
       # remove the pwderify badge since we dont want to render it
       if data['content'].include? PWDERIFY_ALT
@@ -104,11 +105,17 @@ end
 
 # sinatra routes
 
+get '/static/*' do |path|
+  # TODO: make sure this is safe and wont fetch files outside static/
+  send_file "#{__dir__}/static/#{path}"
+end
+
 get '/*/*' do |shorthand, path|
   params['shorthand'] = shorthand
   params['doc'] = path
   show()
 end
+
 
 # get '/pwderify' do
 #   logger.info "REFERER: #{request.referer}"
