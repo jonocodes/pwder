@@ -24,4 +24,4 @@ COPY ./Caddyfile /etc/Caddyfile
 
 COPY . $APP_HOME
 
-CMD rackup -p 4567 -E production -D && caddy --conf /etc/Caddyfile
+CMD rackup -p 4567 -E production -D && caddy -conf /etc/Caddyfile
