@@ -1,5 +1,7 @@
-localhost:80, h.pwder.io {
-  proxy / localhost:4567
+# d.pwder.io {
+# localhost:80, d.pwder.io {
+localhost:80 {
+  proxy / pwder:4567
   log stdout
   errors stdout
 }

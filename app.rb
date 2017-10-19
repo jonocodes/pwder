@@ -105,6 +105,10 @@ end
 
 # sinatra routes
 
+get '/status' do
+  'up'
+end
+
 get '/static/*' do |path|
   # TODO: make sure this is safe and wont fetch files outside static/
   send_file "#{__dir__}/static/#{path}"
