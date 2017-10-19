@@ -4,6 +4,7 @@ require 'safe_yaml'
 require 'open-uri'
 require 'liquid'
 require 'nokogiri'
+require 'socket'
 
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
 
@@ -106,7 +107,7 @@ end
 # sinatra routes
 
 get '/status' do
-  'up'
+  "hostname: #{Socket.gethostname}"
 end
 
 get '/static/*' do |path|

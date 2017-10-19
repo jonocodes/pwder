@@ -12,7 +12,7 @@ docker ps|grep caddy || {
     abiosoft/caddy
 }
 
-# TODO: use swarm to roll out update instead
+# TODO: use swarm to roll out update instead. run 2 containers for HA
 
 docker inspect pwder && docker stop pwder && docker rm pwder
 

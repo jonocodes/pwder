@@ -7,8 +7,8 @@ ENV HOME /root
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-HEALTHCHECK --interval=10s \
-  CMD curl -f http://localhost:4567/status || exit 1
+# HEALTHCHECK --interval=10s \
+#   CMD curl -f http://localhost:4567/status || exit 1
 
 COPY Gemfile* $APP_HOME/
 
