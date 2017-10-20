@@ -7,7 +7,7 @@ gem 'kramdown'
 gem 'safe_yaml'
 gem 'liquid'
 gem 'puma'
-gem 'nokogiri'
+gem 'oga'
 gem 'rouge'
 
 group :development do

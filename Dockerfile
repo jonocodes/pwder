@@ -7,18 +7,15 @@ ENV HOME /root
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-# HEALTHCHECK --interval=10s \
-#   CMD curl -f http://localhost:4567/status || exit 1
-
 COPY Gemfile* $APP_HOME/
 
-RUN apk --no-cache add curl libxslt-dev build-base && \
-    bundle config --global build.nokogiri "--use-system-libraries" && \
+RUN apk --no-cache add curl build-base && \
     echo 'gem: --no-document' >> ~/.gemrc && \
     cp ~/.gemrc /etc/gemrc && \
     chmod uog+r /etc/gemrc && \
-    bundle install && \
-    apk del build-base
+    bundle install --no-cache && \
+    apk del build-base && \
+    rm -rf /root/.bundle # not sure what this dir does, but it takes up space
 
 COPY . $APP_HOME
 

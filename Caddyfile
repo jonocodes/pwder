@@ -1,7 +1,9 @@
 # d.pwder.io {
 #localhost:80, d.pwder.io {
 localhost:80 {
-  proxy / pwder:4567
+  proxy / pwder:4567 {
+    keepalive 0
+  }
   log stdout
   errors stdout
 }

@@ -4,21 +4,19 @@ services:
 
   caddy:
     image: abiosoft/caddy
-    # restart: always
-    # command: --log stdout -host localhost -port 80 "proxy / pwder:4567" "errors stdout"
+    command: --log stdout -host localhost -port 80 "proxy / pwder:4567 { keepalive 0 }" "errors stdout"
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./Caddyfile:/etc/Caddyfile
+      # - ./Caddyfile:/etc/Caddyfile
       - $HOME/.caddy:/root/.caddy
 
   pwder:
     # image: jonocodes/pwder
     image: pwder
-    # restart: always
-    # ports:
-    #   - "4567"
+    ports:
+      - "4567:4567"
     deploy:
       mode: replicated
       replicas: 2

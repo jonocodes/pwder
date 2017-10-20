@@ -3,7 +3,7 @@ require 'kramdown'
 require 'safe_yaml'
 require 'open-uri'
 require 'liquid'
-require 'nokogiri'
+require 'oga'
 require 'socket'
 
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
@@ -87,9 +87,10 @@ def show()
 
       # remove the pwderify badge since we dont want to render it
       if data['content'].include? PWDERIFY_ALT
-        _doc = Nokogiri::HTML(data['content'])
+        _doc = Oga.parse_html(data['content'])
         _doc.xpath("//a/img[@alt=\"#{PWDERIFY_ALT}\"]").remove
-        data['content'] = _doc.to_html
+        data['content'] = _doc.to_xml
+
       end
 
       data['sourcelink'] = params['sourcelink']
