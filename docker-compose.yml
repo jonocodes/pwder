@@ -1,0 +1,25 @@
+version: '3.3'
+
+# this file is for production use
+
+services:
+
+  caddy:
+    image: abiosoft/caddy
+    command: --log stdout -host d.pwder.io -port 80 -port 443 "proxy / pwder:4567 { keepalive 0 }" "errors stdout"
+    # command: --log stdout -host localhost -port 80 "proxy / pwder:4567 { keepalive 0 }" "errors stdout" # for local testing
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $HOME/.caddy:/root/.caddy
+
+  pwder:
+    image: jonocodes/pwder
+    # image: pwder  # for local testing
+    deploy:
+      mode: replicated
+      replicas: 2
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4567/status"]
+      interval: 10s

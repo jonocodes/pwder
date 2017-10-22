@@ -7,8 +7,11 @@ gem 'kramdown'
 gem 'safe_yaml'
 gem 'liquid'
 gem 'puma'
-gem 'nokogiri'
+gem 'oga'
 gem 'rouge'
+
+gem 'rack-test'
+gem 'rspec'
 
 group :development do
   gem 'rerun'

@@ -9,10 +9,13 @@ WORKDIR $APP_HOME
 
 COPY Gemfile* $APP_HOME/
 
-RUN apk --no-cache add build-base libxslt-dev && \
-    bundle config --global build.nokogiri "--use-system-libraries" && \
-    bundle install && \
-    apk del build-base
+RUN apk --no-cache add curl build-base && \
+    echo 'gem: --no-document' >> ~/.gemrc && \
+    cp ~/.gemrc /etc/gemrc && \
+    chmod uog+r /etc/gemrc && \
+    bundle install --no-cache && \
+    apk del build-base && \
+    rm -rf /root/.bundle # not sure what this dir does, but it takes up space
 
 COPY . $APP_HOME
 
