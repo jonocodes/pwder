@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This script runs the app in dev mode so it can be worked on
+
 set -xe
 
 docker build -t pwder .

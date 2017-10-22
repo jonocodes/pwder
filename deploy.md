@@ -1,5 +1,10 @@
 # Notes for deployment
 
+Github/Dockerhub automatically build images from commits, so there is no need to docker push.
+
+The following commands are run on the host server.
+
+
 git clone https://github.com/jonocodes/pwder.git
 cd pwder
 git checkout do
@@ -24,9 +29,13 @@ curl localhost/status
 
 # update deploys
 docker pull jonocodes/pwder
-docker service update --image pwder pwder_pwder --detach=false
+docker service update --force --image pwder pwder_pwder --detach=false
 
 
 # take down
 
 docker stack rm pwder
+
+# scale
+
+docker service scale pwder_pwder=5
