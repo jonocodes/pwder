@@ -10,6 +10,7 @@ gem 'puma'
 gem 'oga'
 gem 'rouge'
 
+# TODO: move to test group?
 gem 'rack-test'
 gem 'rspec'
 
