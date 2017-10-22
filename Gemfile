@@ -10,11 +10,12 @@ gem 'puma'
 gem 'oga'
 gem 'rouge'
 
-# TODO: move to test group?
-gem 'rack-test'
-gem 'rspec'
-
 group :development do
   gem 'rerun'
   gem 'foreman'
+end
+
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
 end

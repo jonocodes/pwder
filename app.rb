@@ -42,7 +42,7 @@ def fetch_doc(path, shorthand=nil)
     path.sub!(/^https:\/\/github.com\/([^\/]*)\/([^\/]*)\/blob/, "https://raw.githubusercontent.com/\\1/\\2")
   end
 
-  # TODO: fix this bad way of passing value back up
+  # TODO: fix this sloppy way of passing value back up
   params['sourcelink'] = "<a href=#{path} target=_blank>Document source</a>"
 
   open(path) { |io| _data = io.read }
