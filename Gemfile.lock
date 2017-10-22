@@ -3,6 +3,7 @@ GEM
   specs:
     ansi (1.5.0)
     ast (2.3.0)
+    diff-lcs (1.3)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
@@ -20,12 +21,27 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    rack-test (0.7.0)
+      rack (>= 1.0, < 3)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rerun (0.11.0)
       listen (~> 3.0)
     rouge (3.0.0)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.0)
     ruby-ll (2.1.2)
       ansi
       ast
@@ -48,8 +64,10 @@ DEPENDENCIES
   liquid
   oga
   puma
+  rack-test
   rerun
   rouge
+  rspec
   safe_yaml
   sinatra
 

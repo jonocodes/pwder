@@ -13,3 +13,7 @@ docker run --rm -p 4567:4567 --name pwder -v $PWD:/app \
   -e PWDER_HERE_DIR=/pwder_here \
   -v ${PWDER_HERE_DIR:=$PWD/examples}:/pwder_here \
   pwder rerun --background ruby app.rb
+
+
+# testing
+# docker run --rm -v $PWD:/app pwder rspec

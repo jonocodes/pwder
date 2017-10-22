@@ -7,7 +7,7 @@ The following commands are run on the host server.
 
 git clone https://github.com/jonocodes/pwder.git
 cd pwder
-git checkout do
+git checkout <branch>
 
 # first time setup
 
@@ -17,6 +17,10 @@ mkdir $HOME/.caddy
 docker swarm init --advertise-addr $(hostname -i)
 
 # first deploy
+
+or curl instead of using git
+
+curl https://raw.githubusercontent.com/jonocodes/pwder/do/docker-compose.yml > pwder-stack.yml
 
 docker stack deploy --compose-file docker-compose.yml pwder
 
