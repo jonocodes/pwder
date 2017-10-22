@@ -1,6 +1,8 @@
 # PWDer
 
-Showcase fully interactive demos of your open source project by only writing markdown.
+[![Build Status](https://travis-ci.org/jonocodes/pwder.svg?branch=master)](https://travis-ci.org/jonocodes/pwder)
+
+Turn your project readme into a fully interactive demo. Write nothing more then Markdown.
 
 Everything is run in the browser. Under the hood *Play with Docker* is used to spin up machine instances so users dont need to install anything. You dont even need to use Docker if your project does not.
 
