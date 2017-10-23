@@ -31,7 +31,8 @@ docker service ls
 curl localhost/status
 
 
-# update deploys
+# update deploys, now in update.sh
+
 docker pull jonocodes/pwder
 docker service update --force --image pwder pwder_pwder --detach=false
 
