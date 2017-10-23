@@ -7,9 +7,14 @@ services:
 
 before_install:
   - docker build -t pwder .
-  - docker ps -a
-  - docker run --rm pwder bundle exec rspec
+  - docker images
 
 script:
-  - bundle exec rspec
-  
+  - docker run --rm pwder bundle exec rspec
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" || "$TRAVIS_BRANCH" == "develop" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker tag pwder jonocodes/pwder:$TRAVIS_BRANCH;
+    docker push jonocodes/pwder:$TRAVIS_BRANCH;
+    fi
