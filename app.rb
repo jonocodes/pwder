@@ -5,13 +5,18 @@ require 'open-uri'
 require 'liquid'
 require 'oga'
 require 'socket'
+require 'yaml'
 
 YAML_FRONT_MATTER_REGEXP = %r!\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)!m
 
 PWDERIFY_ALT='Make document interactive using pwder.io'
 
 set :bind, '0.0.0.0'
-configure { set :server, :puma }
+
+configure do
+  set :server, :puma
+  set :start_time, Time.now
+end
 
 def about(error="")
   {
@@ -19,6 +24,12 @@ def about(error="")
     'content' => Liquid::Template.parse(File.read("#{__dir__}/about.liquid")
       ).render( {'error' => error} )
   }
+end
+
+def build_info()
+  # TODO: make sure this short circut works as expected
+  # TODO: gracefully ignore if file is not found
+  build_info ||= YAML.load_file('build_info.yml')
 end
 
 def fetch_doc(path, shorthand=nil)
@@ -108,7 +119,18 @@ end
 # sinatra routes
 
 get '/status' do
-  "hostname: #{Socket.gethostname}"
+  content_type :json
+
+  { :hostname => Socket.gethostname,
+    :start_time => settings.start_time,
+    :now => Time.now,
+    :uptime_hours => (Time.now - settings.start_time) / 3600,
+    # :git_branch
+    # :git_checksum
+    # :docker_tag
+    # :docker_checksum
+    # :build_date
+  }.merge(build_info).to_json
 end
 
 get '/static/*' do |path|

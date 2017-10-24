@@ -6,6 +6,7 @@ services:
   - docker
 
 before_install:
+  - deploy/build_info.sh > build_info.yml
   - docker build -t pwder .
   - docker images
 
