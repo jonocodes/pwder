@@ -10,7 +10,7 @@ function log {
 
 # TODO: if in git repo, git pull and recall itself incase this file changes
 
-docker pull jonocodes/pwder:latest | grep "Status: Image is up to date" && {
+docker pull jonocodes/pwder:master | grep "Status: Image is up to date" && {
 	log "image is up to date"
 	exit 0
 }
@@ -20,6 +20,6 @@ docker service ls | grep pwder_pwder || {
 	exit 1
 }
 
-log $(docker service update --force --image pwder pwder_pwder --detach=false)
+log $(docker service update --force --image jonocodes/pwder:master pwder_pwder --detach=false)
 
 # TODO: automate check, alert, rollback?

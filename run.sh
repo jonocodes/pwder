@@ -4,6 +4,20 @@
 
 set -xe
 
+# echo -e "git_branch: $(git rev-parse --abbrev-ref HEAD)\ngit_checksum: $(git rev-parse HEAD)\nbuild_date: $(date)" > build_info.yml
+
+# cat > build_info.yml <<- EOF
+# git_branch: $(git rev-parse --abbrev-ref HEAD)
+# git_checksum: $(git rev-parse HEAD)
+# build_date: $(date)
+# EOF
+
+# printf "%s\n" "git_branch: $(git rev-parse --abbrev-ref HEAD)" "git_checksum: $(git rev-parse HEAD)" "build_date: $(date)" > build_info.yml
+
+deploy/build_info.sh > build_info.yml
+
+# cat build_info.yml
+
 docker build -t pwder .
 
 echo Starting PWDer at http://localhost:4567

@@ -6,7 +6,7 @@ terms: 1
 Lets run PWDer in PWDer in PWDer ...
 
 ```.term1
-docker run -p 4567:4567 jonocodes/pwder
+docker run -p 4567:4567 jonocodes/pwder:master
 ```
 
 [Now open the more childish PWDer in a browser](/examples/pwderception.md){:data-term=".term1"}{:data-port="4567"}

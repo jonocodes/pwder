@@ -80,7 +80,7 @@ You can run your own instance of the service instead of using the hosted http://
 
 ### Using Docker
 ```
-docker run -p 4567:4567 jonocodes/pwder
+docker run -p 4567:4567 jonocodes/pwder:master
 ```
 Visit http://localhost:4567/ in your browser.
 
