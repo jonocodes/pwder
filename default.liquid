@@ -92,14 +92,14 @@
         var font3 = document.createElement('link');
         font3.type = 'text/css';
         font3.rel = 'stylesheet';
-        font3.href = 'http://training.play-with-docker.com/css/syntax-highlighting.css';
+        font3.href = '/static/syntax-highlighting.css';
         var q = document.getElementsByTagName('link')[0];
         q.parentNode.insertBefore(font3, q);
     })();
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
-<script src="/static/pwd_pwder.js"></script>
+<script src="/static/pwd.js"></script>
 <script>
     pwd.newSession([{selector: '.term1'}, {selector: '.term2'}, {selector: '.term3'}], {ImageName: '{{image}}'
 });
