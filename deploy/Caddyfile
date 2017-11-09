@@ -1,0 +1,16 @@
+
+# localhost:85 {
+d.pwder.io {
+  proxy / pwder_master:4567 {
+    keepalive 0
+  }
+  errors stdout
+}
+
+# localhost:86 {
+dev.pwder.io {
+  proxy / pwder_develop:4567 {
+    keepalive 0
+  }
+  errors stdout
+}

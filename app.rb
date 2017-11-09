@@ -125,11 +125,8 @@ get '/status' do
     :start_time => settings.start_time,
     :now => Time.now,
     :uptime_hours => (Time.now - settings.start_time) / 3600,
-    # :git_branch
-    # :git_checksum
     # :docker_tag
     # :docker_checksum
-    # :build_date
   }.merge(build_info).to_json
 end
 
