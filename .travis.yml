@@ -7,8 +7,10 @@ services:
 
 before_install:
   - deploy/build_info.sh | tee build_info.yml
+  - echo travis_branch: $TRAVIS_BRANCH >> build_info.yml
   - docker build --cache-from jonocodes/pwder:$TRAVIS_BRANCH -t pwder .
-  - docker images
+  - echo $TRAVIS_BRANCH
+  # - docker images
 
 script:
   - docker run pwder bundle exec rspec
