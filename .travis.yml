@@ -7,9 +7,7 @@ services:
 
 before_install:
   - deploy/build_info.sh | tee build_info.yml
-  - echo "travis_branch&#58; $TRAVIS_BRANCH" >> build_info.yml
   - docker build --cache-from jonocodes/pwder:$TRAVIS_BRANCH -t pwder .
-  # - echo $TRAVIS_BRANCH
   - cat build_info.yml
   - git rev-parse --abbrev-ref HEAD
 
