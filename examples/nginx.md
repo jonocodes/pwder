@@ -40,14 +40,14 @@ EOF
 Start the service in the foreground, so we can easily stop it if needed.
 
 ```.term1
-nginx -g "daemon off;"
+nginx
 ```
 
 ## Test
 
-Now lets see if it node2 can curl Nginx on node1
-```.term2
-curl -i http://node1/hello
+Now lets see if it we can curl Nginx
+```.term1
+curl -i http://localhost/hello
 ```
 
 Expected output:
@@ -61,7 +61,7 @@ Connection: keep-alive
 <h1>Hello world!</h1>
 ```
 
-[Or visit node1 in a browser](/hello){:data-term=".term1"}{:data-port="80"}
+[Or visit it in a browser](/hello){:data-term=".term1"}{:data-port="80"}
 
 
 ## Nginx in Ubuntu
@@ -86,7 +86,7 @@ Start Nginx
 ```.term2
 service nginx start
 
-curl -i http://node2
+curl -i http://localhost
 ```
 
-[And visit node2 in a browser](/){:data-term=".term2"}{:data-port="80"}
+[And visit it in a browser](/){:data-term=".term2"}{:data-port="80"}

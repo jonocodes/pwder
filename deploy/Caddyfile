@@ -1,6 +1,6 @@
 
 # localhost:85 {
-d.pwder.io {
+pwder.io {
   proxy / pwder_master:4567 {
     keepalive 0
   }
