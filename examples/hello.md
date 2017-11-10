@@ -1,6 +1,6 @@
 ---
 title: "Hello World!"
-terms: 2
+terms: 1
 ---
 
 [![Make document interactive using pwder.io](https://img.shields.io/badge/make%20doc%20interactive-with%20pwder.io-orange.svg)](http://pwder.io/?doc=https://github.com/jonocodes/pwder/blob/develop/examples/hello.md)
@@ -17,12 +17,13 @@ Expected output:
 
 Lets run NGINX
 ```.term1
-docker run --name nginx -p 84:80 nginx
+docker pull nginx:alpine
+docker run -d -p 84:80 nginx:alpine
 ```
 
-Now lets see if it node2 can ping Nginx on node1
-```.term2
-curl http://node1:84
+Now lets see if it Nginx is up
+```.term1
+curl http://localhost:84
 ```
 
 [Or visit it in a browser](/){:data-term=".term1"}{:data-port="84"}
