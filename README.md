@@ -8,6 +8,18 @@ Everything is run in the browser. Under the hood *Play with Docker* is used to s
 
 ![PWDer in action](https://raw.githubusercontent.com/jonocodes/pwder/master/screenshot.png?raw=true "Title")
 
+## Status
+
+I have taken down the pwder.io site since this project is not as useful as it originally was.
+
+A few months after I stared working on this, the hosted Play with Docker service changed its authentication method. Formerly all that was needed when starting a new session was to enter a captcha. Now, to authenticate you need a DockerHub account.
+
+While DockerHub accounts are easy to get and free, it severely limits the usefulness of PWDer since it was intended to be a quick interactive way for anyone to use a document they are reading. If someone wants to demo their petstore app online, requiring a demo user to have a Dockerhub account would not make sense.
+
+I do have the option of hosting Play with Docker myself and reverting to captcha authentication. But administering, monitoring, maintaining, and paying for this is more then what I wanted to take on for this project. My original goal was only to add a feature to already existing infrastructure.
+
+That being said, you can still use this locally from source if you want. I recommend going to the Play with Docker site and logging in with a Dockerhub account first. Then bringing up pwder on your own workstation/server.
+
 ## Purpose
 
 [Play with Docker](http://labs.play-with-docker.com/) is a fantastic tool for spinning up VMs for use in a browser for learning and testing your Docker knowledge.
